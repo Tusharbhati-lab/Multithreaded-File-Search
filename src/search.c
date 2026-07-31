@@ -19,12 +19,16 @@ void searchDirectory(const char *directory,
         return;
     }
 
-    while((entry = readdir(dir)) != NULL)
+    while ((entry = readdir(dir)) != NULL)
+{
+    if (strcmp(entry->d_name, ".") == 0 ||
+        strcmp(entry->d_name, "..") == 0)
     {
-
-        printf("%s\n", entry->d_name);
-
+        continue;
     }
+
+    printf("%s\n", entry->d_name);
+}
 
     closedir(dir);
 }
