@@ -27,7 +27,11 @@ void searchDirectory(const char *directory,
         continue;
     }
 
-    printf("%s\n", entry->d_name);
+    if (strcmp(entry->d_name, targetFile) == 0)
+    {
+        printf("Found!\n");
+        printf("%s/%s\n", directory, entry->d_name);
+    }
 }
 
     closedir(dir);
